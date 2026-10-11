@@ -142,3 +142,14 @@ def test_troubleshooting_covers_a_lab_copy_made_before_this_update():
     assert "hytech_de_lab/" in row and "00_Start_Here" in row and "Full refresh all" in row
     reset = text[text.index("## 重置学员 (Reset a participant)"):text.index("## 重新生成数据")]
     assert "hytech_de_lab/" in reset
+
+
+def test_the_setup_guide_starts_with_trioness_steps_in_order():
+    text = read("docs/setup_guide_triones.md")
+    order = text[text.index("## 按顺序完成 (In order)"):text.index("## 0 ·")]
+    positions = [order.find(f"| {n} · ") for n in range(1, 11)]
+    assert all(p >= 0 for p in positions) and positions == sorted(positions), positions
+    assert "labs/00_Start_Here" in order and "CREATE CATALOG" in order
+    get_code = text[text.index("## 1 ·"):text.index("## 2 ·")]
+    assert "https://github.com/zhihantan/hytech-de-workshop" in get_code and "PR #1" in get_code
+    assert "向 Zhi Han 请求访问权限" not in text and "ask Zhi Han for" not in text

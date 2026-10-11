@@ -2,15 +2,34 @@
 
 *Hytech "Data Engineering with Databricks" workshop · Shenzhen · 13–14 Oct 2026*
 
-**请在 10 月 9 日（周五）前完成**，这样我们可以在 10 月 12 日（周一）做预演。预计需要约 30 分钟，大部分是等待时间。
+**请在 10 月 12 日（周一）晚上的预演之前完成**。预计需要约 30 分钟，大部分是等待时间；下面的第 1–3 步要提前几天安排。
 
-**Please finish by Fri 9 Oct** so we can do a dry run on Mon 12 Oct. Expect about 30 minutes, most of it waiting.
+**Please finish before the dry run on Monday evening, 12 Oct.** Expect about 30 minutes, most of it waiting; steps 1–3 below need a few days' lead time.
+
+## 按顺序完成 (In order) — 先看这里 (start here)
+
+按下面的顺序完成：全部完成之后，学员才能从 `labs/00_Start_Here` 开始。第 1–3 步要提前几天安排。每一步的细节见后面的章节。
+
+Do these in order: participants can start from `labs/00_Start_Here` only when all of them are done. Steps 1–3 need a few days' lead time. The sections below have the details for each step.
+
+| 步骤 · 谁 (Step · who) | 做什么 (What) | 为什么 (Why) |
+|---|---|---|
+| 1 · Hytech 账户管理员<br>1 · Hytech's account admin | 创建账户级组 `de_workshop_sz`，加入约 20 位学员（通过 IdP/SCIM），并让他们能登录这个工作区<br>Create the account-level group `de_workshop_sz` with the ~20 participants (via IdP/SCIM), and give them access to this workspace | 学员的所有权限都授予这个组；Unity Catalog 授权只认账户级组<br>Every participant permission is granted to this group; Unity Catalog grants only accept account-level groups |
+| 2 · Hytech 账户管理员<br>2 · Hytech's account admin | 给学员 Databricks SQL 权限；在 ap-southeast-1 上需要时开启跨地域处理 (cross-Geo processing)<br>Give the participants the Databricks SQL entitlement; on ap-southeast-1, turn on cross-Geo processing if needed | 实验 10：Genie Agent 和 Genie One（§2b）<br>Lab 10: the Genie Agent and Genie One (§2b) |
+| 3 · Databricks 客户团队，然后你<br>3 · The Databricks account team, then you | 先确认 Lakehouse RT 的限制（§2b 第 1 步）；客户团队为账户开启 **Lakehouse//RT Beta**（需要几天）；然后在工作区 **Previews** 中开启 Lakehouse RT<br>First check Lakehouse RT's limits (§2b step 1); the account team enables the **Lakehouse//RT Beta** for the account (takes days); then turn on Lakehouse RT in the workspace **Previews** | 可选：实验 09 的 Real-Time 仓库；没有时实验 09 用 `hytech_workshop_sql`<br>Optional: lab 09's Real-Time warehouse; without it, lab 09 runs on `hytech_workshop_sql` |
+| 4 · 你<br>4 · You | 确认自己的权限：工作区管理员，以及 metastore 上的 `CREATE CATALOG`；没有的话，请 metastore 管理员先创建 catalog `hytech_ws_catalog` 并让你成为它的所有者（§0）<br>Check your rights: workspace admin, plus `CREATE CATALOG` on the metastore; without it, the metastore admin creates the catalog `hytech_ws_catalog` first and makes you its owner (§0) | 一键安装要创建 catalog（已经存在时直接使用）、SQL 仓库和 Genie Code 技能<br>The master setup creates the catalog (or uses it if it already exists), the SQL warehouses and the Genie Code skill |
+| 5 · 你<br>5 · You | 确认工作区功能：无服务器计算、Genie Code、一个基础模型 API 对话端点；深圳办公室的出口 IP 在 IP 访问列表中（§0）<br>Check the workspace features: serverless compute, Genie Code, a Foundation Model API chat endpoint; the Shenzhen office's egress IP is in the IP access list (§0) | 所有实验都用无服务器；实验 05 用 Genie Code；实验 04、07 用 `ai_query`<br>Every lab runs on serverless; lab 05 uses Genie Code; labs 04 and 07 use `ai_query` |
+| 6 · 你<br>6 · You | 把代码导入 `/Workspace/Shared/hytech-de-workshop`（§1）<br>Get the code into `/Workspace/Shared/hytech-de-workshop` (§1) | 学员从这个共享文件夹打开实验 00<br>Participants open lab 00 from this shared folder |
+| 7 · 你<br>7 · You | 运行 `setup/00_master_setup`（§2，约 15 分钟）<br>Run `setup/00_master_setup` (§2, about 15 minutes) | 创建学员需要的一切：catalog 和数据、授权、ops 视图、Genie Code 技能、成本仪表盘、SQL 仓库、参考答案<br>Creates everything participants need: the catalog and data, the grants, the ops views, the Genie Code skill, the cost dashboard, the SQL warehouses, the solutions |
+| 8 · 你<br>8 · You | 检查两个作业的所有任务都是绿色（§3、§4）；授权打印 ⚠️ 时，先完成第 1 步再重新运行<br>Check that every task in both jobs is green (§3, §4); if a grant prints ⚠️, finish step 1 and run it again | 授权缺失时，学员在实验 00 就会卡住<br>Without the grants, participants get stuck in lab 00 |
+| 9 · 你，在会场网络<br>9 · You, on the venue network | 用一个非管理员学员账号做连通性测试（§5）<br>The connectivity test with a non-admin participant account (§5) | 证明学员不需要管理员权限就能完成<br>Proves participants can do it without admin rights |
+| 10 · 学员<br>10 · Participants | 从 `/Workspace/Shared/hytech-de-workshop/labs/00_Start_Here` 开始；课堂上你不需要运行任何作业（§6）<br>Start from `/Workspace/Shared/hytech-de-workshop/labs/00_Start_Here`; you run nothing during class (§6) | — |
 
 ## 0 · 你需要 (You need)
 
 | 要求 (Requirement) | 原因 (Why) |
 |---|---|
-| 工作区管理员（或 catalog 所有者 + `CREATE CATALOG`）| 创建 catalog、volume、授权和 Genie Code skill |
+| 工作区管理员，以及 metastore 上的 `CREATE CATALOG`；没有的话，请 metastore 管理员先创建 catalog `hytech_ws_catalog` 并让你成为它的所有者<br>Workspace admin, plus `CREATE CATALOG` on the metastore; without it, the metastore admin creates the catalog `hytech_ws_catalog` first and makes you its owner | 创建 catalog（已经存在时直接使用）、volume、授权和 Genie Code skill<br>To create the catalog (or use it if it already exists), the volumes, the grants and the Genie Code skill |
 | 无服务器计算（notebook、作业、管道）和一个无服务器 SQL 仓库（Small，最多 3 个集群）| 所有实验都使用无服务器 |
 | 基础模型 API 端点可用，例如 `databricks-claude-sonnet-4-5`（或其他对话模型）| 在第 04 和 07 个实验中使用 `ai_query`。在 ap-southeast-1 区域可能需要启用*跨地域处理* |
 | 启用 Genie Code | 第 05 个实验 |
@@ -21,10 +40,11 @@
 
 ## 1 · 导入代码 (Get the code into the workspace)
 
-**选项 A — Git 文件夹（推荐）:** *Workspace → Create → Git folder* → 输入仓库 URL（向 Zhi Han 请求访问权限）→ 克隆到 `/Workspace/Shared/hytech-de-workshop`。
+**选项 A — Git 文件夹（推荐）:** *Workspace → Create → Git folder* → 仓库 URL `https://github.com/zhihantan/hytech-de-workshop`（在 Zhi Han 合并 PR #1 之前，用 `https://github.com/germaineong/hytech-de-workshop`，分支 `main`）→ 克隆到 `/Workspace/Shared/hytech-de-workshop`。
 
-**Option A — Git folder (recommended):** *Workspace → Create → Git folder* → URL of the repo (ask Zhi Han for
-access) → clone into `/Workspace/Shared/hytech-de-workshop`.
+**Option A — Git folder (recommended):** *Workspace → Create → Git folder* → repo URL `https://github.com/zhihantan/hytech-de-workshop`
+(until Zhi Han merges PR #1, use `https://github.com/germaineong/hytech-de-workshop`, branch `main`) → clone into
+`/Workspace/Shared/hytech-de-workshop`.
 
 **选项 B — zip 文件:** *Workspace → Import* 将仓库归档导入 `/Workspace/Shared/hytech-de-workshop`。
 

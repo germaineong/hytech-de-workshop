@@ -16,8 +16,8 @@
 # MAGIC **步骤：** 右上角选择 **Serverless** → 填写顶部的参数 → **Run all**。全部完成约需 15 分钟。<br>
 # MAGIC **Steps:** attach **Serverless** → fill in the widgets at the top → **Run all**. About 15 minutes in total.
 # MAGIC
-# MAGIC 需要工作区管理员权限（或 catalog 所有者 + `CREATE CATALOG`）。作业归运行此笔记本的用户所有，并以该用户身份运行；`instructors` 中的讲师会获得这些作业和管道的管理权限。<br>
-# MAGIC Needs workspace-admin rights (or catalog owner + `CREATE CATALOG`). The jobs are owned by and run as the user who runs this notebook; the people in `instructors` get CAN MANAGE on the jobs and the pipeline.
+# MAGIC 需要工作区管理员权限，以及 metastore 上的 `CREATE CATALOG`；如果 catalog 已经存在，则需要是它的所有者。作业归运行此笔记本的用户所有，并以该用户身份运行；`instructors` 中的讲师会获得这些作业和管道的管理权限。<br>
+# MAGIC Needs workspace-admin rights, plus `CREATE CATALOG` on the metastore, or ownership of the catalog if it already exists. The jobs are owned by and run as the user who runs this notebook; the people in `instructors` get CAN MANAGE on the jobs and the pipeline.
 # MAGIC
 # MAGIC ⚠️ 如果这个工作区已经用 bundle 部署过参考答案管道（例如讲师的测试工作区），请把 `solutions_schema` 设为新的 schema（如 `solutions_master`）：一个 schema 里的管道表只能属于一个管道。笔记本会先检查这一点。<br>
 # MAGIC ⚠️ If this workspace already has the solution pipeline from a bundle deployment (for example the instructors' test workspace), set `solutions_schema` to a new schema such as `solutions_master`: pipeline tables in a schema can belong to one pipeline only. The notebook checks this first.

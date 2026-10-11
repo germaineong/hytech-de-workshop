@@ -75,3 +75,12 @@ def test_new_files_name_no_internal_workspace():
     marker = "fe" + "vm"   # 拆开写，这一行本身不触发检查 (split so this line doesn't trip the check)
     for path in NEW_FILES:
         assert marker not in read(path).lower().replace("-", ""), path
+
+
+def test_setup_creates_the_catalog_only_when_it_is_missing():
+    # 在测试工作区实测：catalog 已经存在时，CREATE CATALOG IF NOT EXISTS 仍然要求 metastore 上的 CREATE CATALOG 权限
+    # Live on a test workspace: CREATE CATALOG IF NOT EXISTS still needs CREATE CATALOG on the metastore when the catalog exists
+    text = read("setup/01_create_catalog_schemas.py")
+    check = text.index("SHOW CATALOGS LIKE")
+    assert check < text.index("CREATE CATALOG IF NOT EXISTS")
+    assert "if create_catalog and not exists:" in text and "already exists" in text

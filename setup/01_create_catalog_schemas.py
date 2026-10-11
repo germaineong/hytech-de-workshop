@@ -38,8 +38,13 @@ def run(stmt: str, optional: bool = False) -> bool:
         return False
 
 
-if create_catalog:
+# 只在 catalog 不存在时创建：即使加了 IF NOT EXISTS，CREATE CATALOG 也要求 metastore 上的 CREATE CATALOG 权限
+# Create the catalog only when it is missing: even with IF NOT EXISTS, CREATE CATALOG needs CREATE CATALOG on the metastore
+exists = catalog in [r.catalog for r in spark.sql(f"SHOW CATALOGS LIKE '{catalog}'").collect()]
+if create_catalog and not exists:
     run(f"CREATE CATALOG IF NOT EXISTS {catalog} COMMENT 'Hytech DE workshop — MT5 trade lakehouse'")
+elif exists:
+    print(f"✅ catalog {catalog} already exists: using it")
 
 schemas = {
     "raw": "Landing zone: DMS-style MT5 CDC Parquet, Sensors-style app events, reference CSVs",
