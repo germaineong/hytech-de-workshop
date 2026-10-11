@@ -40,11 +40,10 @@ Do these in order: participants can start from `labs/00_Start_Here` only when al
 
 ## 1 · 导入代码 (Get the code into the workspace)
 
-**选项 A — Git 文件夹（推荐）:** *Workspace → Create → Git folder* → 仓库 URL `https://github.com/zhihantan/hytech-de-workshop`（在 Zhi Han 合并 PR #1 之前，用 `https://github.com/germaineong/hytech-de-workshop`，分支 `main`）→ 克隆到 `/Workspace/Shared/hytech-de-workshop`。
+**选项 A — Git 文件夹（推荐）:** *Workspace → Create → Git folder* → 仓库 URL `https://github.com/germaineong/hytech-de-workshop`（分支 `main`）→ 克隆到 `/Workspace/Shared/hytech-de-workshop`。
 
-**Option A — Git folder (recommended):** *Workspace → Create → Git folder* → repo URL `https://github.com/zhihantan/hytech-de-workshop`
-(until Zhi Han merges PR #1, use `https://github.com/germaineong/hytech-de-workshop`, branch `main`) → clone into
-`/Workspace/Shared/hytech-de-workshop`.
+**Option A — Git folder (recommended):** *Workspace → Create → Git folder* → repo URL
+`https://github.com/germaineong/hytech-de-workshop` (branch `main`) → clone into `/Workspace/Shared/hytech-de-workshop`.
 
 **选项 B — zip 文件:** *Workspace → Import* 将仓库归档导入 `/Workspace/Shared/hytech-de-workshop`。
 

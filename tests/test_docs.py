@@ -151,7 +151,7 @@ def test_the_setup_guide_starts_with_trioness_steps_in_order():
     assert all(p >= 0 for p in positions) and positions == sorted(positions), positions
     assert "labs/00_Start_Here" in order and "CREATE CATALOG" in order
     get_code = text[text.index("## 1 ·"):text.index("## 2 ·")]
-    assert "https://github.com/zhihantan/hytech-de-workshop" in get_code and "PR #1" in get_code
+    assert "https://github.com/germaineong/hytech-de-workshop" in get_code and "branch `main`" in get_code
     assert "向 Zhi Han 请求访问权限" not in text and "ask Zhi Han for" not in text
 
 
@@ -168,3 +168,16 @@ def test_the_setup_guide_leaves_the_dry_run_to_the_instructors():
     text = read("docs/setup_guide_triones.md")
     assert "预演" not in text and "dry run" not in text.lower()
     assert "第 1–3 步要提前几天安排" in text and "steps 1–3 below need a few days' lead time" in text
+
+
+def test_everyone_clones_one_repo_with_no_merge_to_wait_for():
+    # Triones 和学员直接克隆同一个代码库 (Triones and the participants clone the same repo directly)
+    import subprocess
+    files = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()
+    for path in files:
+        try:
+            text = read(path)
+        except (UnicodeDecodeError, IsADirectoryError, FileNotFoundError):
+            continue
+        for stale in ("zhihan" + "tan/hytech-de-workshop", "PR " + "#1"):
+            assert stale not in text, (path, stale)

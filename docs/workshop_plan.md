@@ -201,7 +201,7 @@ One instructor presents while the other circulates; swap per module. With 20 new
 
   Everything is idempotent and safe to re-run. Per-participant isolation comes from each person's own schema and pipeline.
 
-## 6. 构建计划 (Build plan)（代码库 `zhihantan/hytech-de-workshop`）
+## 6. 构建计划 (Build plan)（代码库 `germaineong/hytech-de-workshop`）
 
 | # | 组件 (Component) | 路径 (Path) | 状态 (Status) |
 |---|---|---|---|
