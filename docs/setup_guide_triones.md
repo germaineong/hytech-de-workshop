@@ -2,21 +2,21 @@
 
 *Hytech "Data Engineering with Databricks" workshop · Shenzhen · 13–14 Oct 2026*
 
-预计需要约 30 分钟，大部分是等待时间；下面的第 1–3 步要提前几天安排。
+预计需要约 30 分钟，大部分是等待时间。
 
-Expect about 30 minutes, most of it waiting; steps 1–3 below need a few days' lead time.
+Expect about 30 minutes, most of it waiting.
 
 ## 按顺序完成 (In order) — 先看这里 (start here)
 
-按下面的顺序完成：全部完成之后，学员才能从 `labs/00_Start_Here` 开始。第 1–3 步要提前几天安排。每一步的细节见后面的章节。
+按下面的顺序完成：全部完成之后，学员才能从 `labs/00_Start_Here` 开始。每一步的细节见后面的章节。
 
-Do these in order: participants can start from `labs/00_Start_Here` only when all of them are done. Steps 1–3 need a few days' lead time. The sections below have the details for each step.
+Do these in order: participants can start from `labs/00_Start_Here` only when all of them are done. The sections below have the details for each step.
 
 | 步骤 · 谁 (Step · who) | 做什么 (What) | 为什么 (Why) |
 |---|---|---|
 | 1 · Hytech 账户管理员<br>1 · Hytech's account admin | 创建账户级组 `de_workshop_sz`，加入约 20 位学员（通过 IdP/SCIM），并让他们能登录这个工作区<br>Create the account-level group `de_workshop_sz` with the ~20 participants (via IdP/SCIM), and give them access to this workspace | 学员的所有权限都授予这个组；Unity Catalog 授权只认账户级组<br>Every participant permission is granted to this group; Unity Catalog grants only accept account-level groups |
 | 2 · Hytech 账户管理员<br>2 · Hytech's account admin | 给学员 Databricks SQL 权限；在 ap-southeast-1 上需要时开启跨地域处理 (cross-Geo processing)<br>Give the participants the Databricks SQL entitlement; on ap-southeast-1, turn on cross-Geo processing if needed | 实验 10：Genie Agent 和 Genie One（§2b）<br>Lab 10: the Genie Agent and Genie One (§2b) |
-| 3 · Databricks 客户团队，然后你<br>3 · The Databricks account team, then you | 先确认 Lakehouse RT 的限制（§2b 第 1 步）；客户团队为账户开启 **Lakehouse//RT Beta**（需要几天）；然后在工作区 **Previews** 中开启 Lakehouse RT<br>First check Lakehouse RT's limits (§2b step 1); the account team enables the **Lakehouse//RT Beta** for the account (takes days); then turn on Lakehouse RT in the workspace **Previews** | 可选：实验 09 的 Real-Time 仓库；没有时实验 09 用 `hytech_workshop_sql`<br>Optional: lab 09's Real-Time warehouse; without it, lab 09 runs on `hytech_workshop_sql` |
+| 3 · Databricks 客户团队，然后你<br>3 · The Databricks account team, then you | 先确认 Lakehouse RT 的限制（§2b 第 1 步）；客户团队为账户开启 **Lakehouse//RT Beta**；然后在工作区 **Previews** 中开启 Lakehouse RT<br>First check Lakehouse RT's limits (§2b step 1); the account team enables the **Lakehouse//RT Beta** for the account; then turn on Lakehouse RT in the workspace **Previews** | 可选：实验 09 的 Real-Time 仓库；没有时实验 09 用 `hytech_workshop_sql`<br>Optional: lab 09's Real-Time warehouse; without it, lab 09 runs on `hytech_workshop_sql` |
 | 4 · 你<br>4 · You | 确认自己的权限：工作区管理员，以及 metastore 上的 `CREATE CATALOG`；没有的话，请 metastore 管理员先创建 catalog `hytech_ws_catalog` 并让你成为它的所有者（§0）<br>Check your rights: workspace admin, plus `CREATE CATALOG` on the metastore; without it, the metastore admin creates the catalog `hytech_ws_catalog` first and makes you its owner (§0) | 一键安装要创建 catalog（已经存在时直接使用）、SQL 仓库和 Genie Code 技能<br>The master setup creates the catalog (or uses it if it already exists), the SQL warehouses and the Genie Code skill |
 | 5 · 你<br>5 · You | 确认工作区功能：无服务器计算、Genie Code、一个基础模型 API 对话端点；深圳办公室的出口 IP 在 IP 访问列表中（§0）<br>Check the workspace features: serverless compute, Genie Code, a Foundation Model API chat endpoint; the Shenzhen office's egress IP is in the IP access list (§0) | 所有实验都用无服务器；实验 05 用 Genie Code；实验 04、07 用 `ai_query`<br>Every lab runs on serverless; lab 05 uses Genie Code; labs 04 and 07 use `ai_query` |
 | 6 · 你<br>6 · You | 把代码导入 `/Workspace/Shared/hytech-de-workshop`（§1）<br>Get the code into `/Workspace/Shared/hytech-de-workshop` (§1) | 学员从这个共享文件夹打开实验 00<br>Participants open lab 00 from this shared folder |
@@ -89,10 +89,10 @@ CI/CD demo, see `docs/cicd_demo.md`; you don't need to deploy it.) This creates:
 
 0. 先更新工作区中的代码：Git 文件夹 → **Pull**（选项 A），或重新导入 zip（选项 B）。旧代码中没有 `setup/08_workshop_warehouses` 和新的实验。
 1. 先检查 Lakehouse RT 的限制：没有 serverless egress control、出站 Private Link 或合规安全配置；workshop catalog 不在 Unity Catalog 默认存储中（在 Catalog Explorer 中查看 catalog 的存储位置）。有任何一项，Lakehouse RT 就不能用：跳过第 2–3 步，实验 09 用 `hytech_workshop_sql` 完成。
-2. 请 Databricks 客户团队为账户开启 **Lakehouse//RT Beta**（需要提前几天）。
+2. 请 Databricks 客户团队为账户开启 **Lakehouse//RT Beta**。
 3. 工作区菜单 → **Previews** → 搜索 "Lakehouse RT" → 开启。
 4. 重新运行 `setup/00_master_setup`（可以重复运行）。设置作业的 `workshop_warehouses` 任务（`setup/08_workshop_warehouses`）会创建工作坊 SQL 仓库 `hytech_workshop_sql`（serverless，Small，1–3 个集群，空闲 10 分钟自动停止），Lakehouse RT 开启时再创建 `hytech_workshop_rt`（Real-Time，Small），并授予 `de_workshop_sz` *Can use*。想用已有的仓库代替 `hytech_workshop_sql`：在 `00_master_setup` 中设置 `warehouse_id`。
-5. Genie：学员需要 **Databricks SQL** 权限。在 ap-southeast-1，如果看不到 Agent 模式或 Genie One 对话，请账户管理员在账户控制台中开启跨地域处理 (cross-Geo processing)；这也需要提前安排。
+5. Genie：学员需要 **Databricks SQL** 权限。在 ap-southeast-1，如果看不到 Agent 模式或 Genie One 对话，请账户管理员在账户控制台中开启跨地域处理 (cross-Geo processing)。
 6. 用一个**非管理员**学员账号测试（由你或一位学员操作）：创建管道和作业、实验 03c 的预发布通道、实验 09 的计算资源菜单中能看到 Real-Time 仓库、实验 10 能创建 Genie Agent。
 
 0. First refresh the code in the workspace: Git folder → **Pull** (option A), or re-import the zip (option B). The old
@@ -100,7 +100,7 @@ CI/CD demo, see `docs/cicd_demo.md`; you don't need to deploy it.) This creates:
 1. Check Lakehouse RT's limits first: no serverless egress control, outbound Private Link or compliance security
    profile, and the workshop catalog is not in Unity Catalog default storage (check the catalog's storage location in
    Catalog Explorer). If any applies, Lakehouse RT won't work: skip steps 2–3; lab 09 runs on `hytech_workshop_sql`.
-2. Ask the Databricks account team to enable the **Lakehouse//RT Beta** for the account (allow a few days).
+2. Ask the Databricks account team to enable the **Lakehouse//RT Beta** for the account.
 3. Workspace menu → **Previews** → search "Lakehouse RT" → turn it on.
 4. Re-run `setup/00_master_setup` (it is safe to re-run). The setup job's `workshop_warehouses` task
    (`setup/08_workshop_warehouses`) creates the workshop SQL warehouse `hytech_workshop_sql` (serverless, Small, 1–3
@@ -108,7 +108,7 @@ CI/CD demo, see `docs/cicd_demo.md`; you don't need to deploy it.) This creates:
    grants `de_workshop_sz` *Can use*. To use an existing warehouse instead of `hytech_workshop_sql`, set `warehouse_id`
    in `00_master_setup`.
 5. Genie: participants need the **Databricks SQL** entitlement. On ap-southeast-1, if Agent mode or Genie One chat is
-   missing, an account admin turns on cross-Geo processing in the account console; plan for that too.
+   missing, an account admin turns on cross-Geo processing in the account console.
 6. Test with one **non-admin** participant account (you or a participant drives it): creating a pipeline and a job,
    lab 03c's staging lane, the Real-Time warehouse in lab 09's compute menu, and creating a Genie Agent in lab 10.
 
