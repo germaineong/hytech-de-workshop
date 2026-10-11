@@ -95,3 +95,11 @@ def test_lab_02_counts_a_progress_entry_without_numinputrows_as_zero():
     # 在交互式无服务器会话中实测：recentProgress 中有的条目 numInputRows 是 None，sum() 会报 int + NoneType
     # Live in an interactive serverless session: some recentProgress entries have numInputRows None, and sum() fails on int + NoneType
     assert 'sum((p["numInputRows"] or 0) for p in query.recentProgress)' in read("labs/02_Ingestion.py")
+
+
+def test_03b_and_the_lab_map_point_to_the_lab_03_readme():
+    # 实验 03 不是笔记本：学员要先找到 03_pipeline/README.md (lab 03 isn't a notebook: people must find 03_pipeline/README.md first)
+    intro = read("labs/03b_Explore_Pipeline.sql").split("-- COMMAND ----------")[0]
+    assert intro.count("`03_pipeline/README.md`") == 2 and "trade_lakehouse_<你的名字>" in intro and "trade_lakehouse_<your_name>" in intro
+    row = next(line for line in read("labs/00_Start_Here.py").splitlines() if "`03b_Explore_Pipeline`" in line)
+    assert "README.md" in row

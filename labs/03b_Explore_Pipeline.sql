@@ -2,9 +2,9 @@
 -- MAGIC %md
 -- MAGIC # 03b · 探索你的管道结果 (Explore your pipeline)
 -- MAGIC
--- MAGIC 在 lab 03 的管道成功运行之后再执行。所有查询都在你自己的 schema 里。
+-- MAGIC 先完成实验 03：按 `03_pipeline/README.md`（在你的副本 `hytech_de_lab/03_pipeline/` 中）创建并运行管道 `trade_lakehouse_<你的名字>`。实验 03 不是笔记本，而是你在 Lakeflow 管道编辑器中用这个文件夹里的文件搭建的管道。管道成功运行之后，再运行这里的查询；所有查询都在你自己的 schema 里。
 -- MAGIC
--- MAGIC Execute after the pipeline from lab 03 has run successfully. All queries run in your own schema.
+-- MAGIC Finish lab 03 first: build and run the pipeline `trade_lakehouse_<your_name>` by following `03_pipeline/README.md` (in your copy, `hytech_de_lab/03_pipeline/`). Lab 03 isn't a notebook: it's a pipeline you build in the Lakeflow Pipelines Editor from the files in that folder. Run the queries here once the pipeline has run successfully; they all run in your own schema.
 
 -- COMMAND ----------
 

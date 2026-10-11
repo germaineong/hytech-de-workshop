@@ -11,7 +11,7 @@
 # MAGIC | M3–M5 | `00b_Live_Data` | 需要新数据时运行：向你自己的落地区写入新的 DMS 文件 |
 # MAGIC | M2 | `01_Unity_Catalog` | 授权、标签、列掩码、行过滤 |
 # MAGIC | M3 | `02_Ingestion` | CTAS · COPY INTO · Auto Loader · JSON 与 rescued data |
-# MAGIC | M4 | `03_pipeline/` + `03b_Explore_Pipeline` | Spark 声明式管道：bronze → silver → gold |
+# MAGIC | M4 | `03_pipeline/`（先读 `README.md`）+ `03b_Explore_Pipeline` | Spark 声明式管道：bronze → silver → gold |
 # MAGIC | M4 | `03c_Data_Quality_and_Monitoring` · `03d_Run_If_Dependencies` | 数据质量（WARN / DROP / FAIL、隔离表）、血缘、事件日志；作业的 Depends on 与 Run if |
 # MAGIC | M5 | `04_Lakeflow_Jobs` | 作业：DQ 闸门、for-each、Run-if、修复运行 |
 # MAGIC | M5 | `04c_Failure_Recovery_and_Backfill` | 管道失败之后：重试、修复运行、按日期回填 |
