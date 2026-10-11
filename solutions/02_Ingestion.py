@@ -96,7 +96,7 @@ query = (
     .toTable(f"{catalog}.{my_schema}.bronze_deals_al")
 )
 query.awaitTermination()
-print("rows in this run:", sum(p["numInputRows"] for p in query.recentProgress))
+print("rows in this run:", sum((p["numInputRows"] or 0) for p in query.recentProgress))
 
 # COMMAND ----------
 

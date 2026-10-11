@@ -89,3 +89,9 @@ def test_lab_04_trigger_step_says_what_to_do_when_the_job_does_not_start():
 def test_the_dry_run_tries_the_file_arrival_trigger():
     line = next(l for l in read("docs/facilitator_guide.md").splitlines() if l.startswith("- [ ] At the dry run"))
     assert "file-arrival trigger" in line and "00b" in line
+
+
+def test_lab_02_counts_a_progress_entry_without_numinputrows_as_zero():
+    # 在交互式无服务器会话中实测：recentProgress 中有的条目 numInputRows 是 None，sum() 会报 int + NoneType
+    # Live in an interactive serverless session: some recentProgress entries have numInputRows None, and sum() fails on int + NoneType
+    assert 'sum((p["numInputRows"] or 0) for p in query.recentProgress)' in read("labs/02_Ingestion.py")
