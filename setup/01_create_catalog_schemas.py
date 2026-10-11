@@ -15,7 +15,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("participant_group", "de_workshop_sz")
 dbutils.widgets.dropdown("create_catalog", "true", ["true", "false"])
 

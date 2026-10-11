@@ -12,7 +12,7 @@
 #   DATABRICKS_CLIENT_SECRET   service principal OAuth secret / 服务主体 OAuth 密钥
 # 工作区 URL 来自 databricks.yml 中的 `workspace.host`。可选的 bundle 变量，例如
 # The workspace URL comes from `workspace.host` in databricks.yml. Optional bundle variables, e.g.
-#   BUNDLE_VAR_catalog=hytech_de_workshop   BUNDLE_VAR_llm_endpoint=databricks-claude-sonnet-4-5
+#   BUNDLE_VAR_catalog=hytech_ws_catalog   BUNDLE_VAR_llm_endpoint=databricks-claude-sonnet-4-5
 #
 # Runner 从 github.com 下载 CLI。如果你的 Runner 无法访问 GitHub，请将 CLI 构建到
 # Runner 镜像中或在内部镜像发布 zip。

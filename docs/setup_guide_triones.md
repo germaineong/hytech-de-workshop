@@ -38,7 +38,7 @@ Open `/Workspace/Shared/hytech-de-workshop/setup/00_master_setup` → attach **S
 
 | 参数 (Widget) | 值 (Value) |
 |---|---|
-| `catalog` | `hytech_de_workshop` |
+| `catalog` | `hytech_ws_catalog` |
 | `participant_group` | `de_workshop_sz` |
 | `participants` | 学员邮箱，逗号分隔<br>Participant emails, comma-separated |
 | `instructors` | Zhi Han 和 Germaine 的邮箱：他们会获得作业、管道和成本仪表盘的管理权限<br>Zhi Han's and Germaine's emails: they get CAN MANAGE on the jobs, the pipeline and the cost dashboard |
@@ -51,7 +51,7 @@ Open `/Workspace/Shared/hytech-de-workshop/setup/00_master_setup` → attach **S
 If you prefer the CLI: from the Git folder, open `databricks.yml` → **Deploy** (bundle UI), or use the CLI, then run the two jobs yourself as in sections 3 and 4:
 
 ```bash
-databricks bundle deploy -t prod --var="catalog=hytech_de_workshop" --var="llm_endpoint=<your endpoint>"
+databricks bundle deploy -t prod --var="catalog=hytech_ws_catalog" --var="llm_endpoint=<your endpoint>"
 ```
 
 先在 `databricks.yml` 中设置 `workspace.host` 为你的工作区 URL。（`cicd` 目标是讲师的 CI/CD 演示，详见 `docs/cicd_demo.md`；你不需要部署它。）这会创建：
@@ -104,7 +104,7 @@ Run **`hytech_ws_setup`** with these job parameters:
 
 | 参数 (Parameter) | 值 (Value) |
 |---|---|
-| `catalog` | `hytech_de_workshop`（或选择你喜欢的名称：然后在所有地方使用它）|
+| `catalog` | `hytech_ws_catalog`（或选择你喜欢的名称：然后在所有地方使用它）|
 | `participant_group` | `de_workshop_sz` |
 | `participants` | 学员的邮箱地址，用逗号分隔（创建并转移 `u_<name>` schema）|
 | `scale` | `full` |
@@ -123,10 +123,10 @@ Please also share it with Zhi Han and Germaine (*Share* → Can Manage); the mas
 一键安装同样会自动运行这一步。<br>
 The master setup runs this step for you too.
 
-运行作业 **`hytech_daily_trading_reporting_solution`**（约 4 分钟）。它运行参考答案管道并填充 `hytech_de_workshop.solutions` — 学员在第 07 个实验和追进度时使用此 schema。
+运行作业 **`hytech_daily_trading_reporting_solution`**（约 4 分钟）。它运行参考答案管道并填充 `hytech_ws_catalog.solutions` — 学员在第 07 个实验和追进度时使用此 schema。
 
 Run job **`hytech_daily_trading_reporting_solution`** (about 4 minutes). It runs the solution pipeline and fills
-`hytech_de_workshop.solutions` — participants use this schema in lab 07 and to catch up.
+`hytech_ws_catalog.solutions` — participants use this schema in lab 07 and to catch up.
 
 ## 5 · 连通性测试 (Connectivity test from the Shenzhen office) — important
 

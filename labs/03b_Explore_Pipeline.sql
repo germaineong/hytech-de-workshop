@@ -10,7 +10,7 @@
 
 DECLARE OR REPLACE VARIABLE my_schema STRING DEFAULT
   'u_' || regexp_replace(lower(split_part(current_user(), '@', 1)), '[^a-z0-9]', '_');
-USE CATALOG hytech_de_workshop;
+USE CATALOG hytech_ws_catalog;
 USE SCHEMA IDENTIFIER(my_schema);
 
 -- COMMAND ----------

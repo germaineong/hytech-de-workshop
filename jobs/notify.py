@@ -10,7 +10,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("schema", "")
 dbutils.widgets.text("reason", "job_task_failed")
 dbutils.widgets.text("job_id", "")

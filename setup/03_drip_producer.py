@@ -20,7 +20,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("duration_minutes", "60")
 dbutils.widgets.text("interval_seconds", "30")
 dbutils.widgets.text("servers", "")

@@ -68,10 +68,10 @@ Run the pipeline and query the new table.
 
 ### L5 · 成本查询 (cost query) — *SQL editor*
 
-> 用 `hytech_de_workshop.ops.billing_usage` 和 `ops.list_prices` 计算我的管道过去 7 天每天的 DBU 和标价成本（美元），
+> 用 `hytech_ws_catalog.ops.billing_usage` 和 `ops.list_prices` 计算我的管道过去 7 天每天的 DBU 和标价成本（美元），
 > 管道名以 trade_lakehouse 开头、由我创建（`ops.pipelines`）。
 >
-> Use `hytech_de_workshop.ops.billing_usage` and `ops.list_prices` to calculate my pipeline's daily DBU and list-price cost (USD) for the past 7 days, filtering to pipelines starting with trade_lakehouse and created by me (from `ops.pipelines`).
+> Use `hytech_ws_catalog.ops.billing_usage` and `ops.list_prices` to calculate my pipeline's daily DBU and list-price cost (USD) for the past 7 days, filtering to pipelines starting with trade_lakehouse and created by me (from `ops.pipelines`).
 
 ✅ **预期结果：** 按 `sku_name` 与价格有效期窗口连接，`usage_quantity × pricing.default`，按 `usage_metadata.dlt_pipeline_id` 过滤。
 

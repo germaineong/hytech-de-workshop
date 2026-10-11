@@ -9,7 +9,7 @@ _spec = importlib.util.spec_from_file_location("dashboard_spec", os.path.join(HE
 ds = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ds)
 
-D = ds.trading_overview("hytech_de_workshop", "u_x")
+D = ds.trading_overview("hytech_ws_catalog", "u_x")
 WIDGETS = [item["widget"] for page in D["pages"] for item in page["layout"]]
 VERSIONS = {"counter": 2, "table": 2, "line": 3, "bar": 3, "filter-date-range-picker": 2}
 
@@ -18,8 +18,8 @@ def test_serialisable_and_datasets_read_the_participants_own_gold_tables():
     json.dumps(D)
     queries = {d["name"]: "".join(d["queryLines"]) for d in D["datasets"]}
     assert set(queries) == {"daily_volume", "funding", "top_symbols"}
-    assert "`hytech_de_workshop`.`u_x`.gold_daily_symbol_volume" in queries["daily_volume"]
-    assert "`hytech_de_workshop`.`u_x`.gold_funding_daily" in queries["funding"]
+    assert "`hytech_ws_catalog`.`u_x`.gold_daily_symbol_volume" in queries["daily_volume"]
+    assert "`hytech_ws_catalog`.`u_x`.gold_funding_daily" in queries["funding"]
     # 34 个品种画成柱状图太挤：只取名义金额最大的 10 个，但保留 deal_date，日期筛选器仍然有效
     # 34 symbols are too many bars: keep the 10 biggest by notional, but keep deal_date so the date filter still applies
     assert "LIMIT 10" in queries["top_symbols"] and "deal_date" in queries["top_symbols"]

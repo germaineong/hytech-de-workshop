@@ -17,7 +17,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("schema", "")
 dbutils.widgets.text("server_id", "mt5-sg-01")
 dbutils.widgets.text("fail_server", "", "Lab: make this server fail on purpose")

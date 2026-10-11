@@ -18,22 +18,22 @@ Build a dashboard on your own gold tables, then switch its compute to a **Lakeho
 
    ```sql
    SELECT deal_date, server_id, symbol, asset_class, deals, lots, notional_usd, client_pnl_usd
-   FROM hytech_de_workshop.u_<你的名字>.gold_daily_symbol_volume
+   FROM hytech_ws_catalog.u_<你的名字>.gold_daily_symbol_volume
    ```
 
 3. 再添加一个 SQL 数据集 `funding`：
 
    ```sql
    SELECT deal_date, brand, method, deposits_usd, withdrawals_usd, net_funding_usd
-   FROM hytech_de_workshop.u_<你的名字>.gold_funding_daily
+   FROM hytech_ws_catalog.u_<你的名字>.gold_funding_daily
    ```
 
 4. 第三个 SQL 数据集 `top_symbols`：名义金额最大的 10 个品种（34 个品种画成柱状图太挤）。保留 `deal_date`，日期筛选器才能作用于它：
 
    ```sql
    SELECT deal_date, symbol, asset_class, notional_usd
-   FROM hytech_de_workshop.u_<你的名字>.gold_daily_symbol_volume
-   WHERE symbol IN (SELECT symbol FROM hytech_de_workshop.u_<你的名字>.gold_daily_symbol_volume
+   FROM hytech_ws_catalog.u_<你的名字>.gold_daily_symbol_volume
+   WHERE symbol IN (SELECT symbol FROM hytech_ws_catalog.u_<你的名字>.gold_daily_symbol_volume
                     GROUP BY symbol ORDER BY sum(notional_usd) DESC LIMIT 10)
    ```
 

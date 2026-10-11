@@ -56,7 +56,7 @@ lots 是标准手数；notional_usd 是美元名义金额。
 
 ```sql
 SELECT brand, round(sum(trading_pnl_usd), 2) AS client_pnl_usd
-FROM hytech_de_workshop.u_<你的名字>.gold_client_daily_pnl
+FROM hytech_ws_catalog.u_<你的名字>.gold_client_daily_pnl
 WHERE deal_date >= date_sub(current_date(), 7)
 GROUP BY brand ORDER BY client_pnl_usd
 ```

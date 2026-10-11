@@ -8,7 +8,7 @@ _spec = importlib.util.spec_from_file_location("run_if_spec", os.path.join(HERE,
 rif = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(rif)
 
-SETTINGS = rif.run_if_job_settings("run_if_lab_x", "/Users/x@example.com/hytech_de_lab/jobs", "hytech_de_workshop", "u_x")
+SETTINGS = rif.run_if_job_settings("run_if_lab_x", "/Users/x@example.com/hytech_de_lab/jobs", "hytech_ws_catalog", "u_x")
 TASKS = {t["task_key"]: t for t in SETTINGS["tasks"]}
 
 
@@ -38,7 +38,7 @@ def test_audit_depends_on_every_condition_task():
 
 
 def test_job_parameters_and_notebook_paths():
-    assert SETTINGS["parameters"] == [{"name": "catalog", "default": "hytech_de_workshop"}, {"name": "schema", "default": "u_x"}]
+    assert SETTINGS["parameters"] == [{"name": "catalog", "default": "hytech_ws_catalog"}, {"name": "schema", "default": "u_x"}]
     paths = {t["notebook_task"]["notebook_path"].rsplit("/", 1)[-1] for t in SETTINGS["tasks"]}
     assert paths == set(rif.RUN_IF_JOB_NOTEBOOKS)
     assert rif.run_if_job_name("zhang_san") == "run_if_lab_zhang_san"

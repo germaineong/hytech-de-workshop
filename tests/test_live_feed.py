@@ -51,10 +51,10 @@ def personal_copy(shared, tmp_path):
 
 
 def test_personal_roots_follow_the_lab_00_naming_rule():
-    assert lf.personal_roots("hytech_de_workshop", "Zhang.San@hytech.example") == {
-        "schema": "u_zhang_san", "volume_root": "/Volumes/hytech_de_workshop/u_zhang_san",
-        "landing": "/Volumes/hytech_de_workshop/u_zhang_san/landing",
-        "producer": "/Volumes/hytech_de_workshop/u_zhang_san/producer"}
+    assert lf.personal_roots("hytech_ws_catalog", "Zhang.San@hytech.example") == {
+        "schema": "u_zhang_san", "volume_root": "/Volumes/hytech_ws_catalog/u_zhang_san",
+        "landing": "/Volumes/hytech_ws_catalog/u_zhang_san/landing",
+        "producer": "/Volumes/hytech_ws_catalog/u_zhang_san/producer"}
     for user in ("Zhang.San@hytech.example", "li-si+test@example.cn", "WANG_wu@example.com"):
         assert lf.personal_roots("c", user)["schema"] == participant_schema(user), user
 

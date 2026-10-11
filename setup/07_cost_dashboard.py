@@ -12,7 +12,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("participant_group", "de_workshop_sz")
 dbutils.widgets.text("warehouse_id", "", "SQL warehouse ID (empty = pick a serverless one)")
 
@@ -32,7 +32,7 @@ NAME = "Hytech DE Workshop - Cost and Health"
 PARENT = f"/Workspace/Users/{w.current_user.me().user_name}/hytech_de_workshop"
 
 src = os.path.abspath(os.path.join(os.getcwd(), "..", "dashboards", "workshop_cost_health.json"))
-serialized = open(src, encoding="utf-8").read().replace("hytech_de_workshop.ops.", f"{catalog}.ops.")
+serialized = open(src, encoding="utf-8").read().replace("hytech_ws_catalog.ops.", f"{catalog}.ops.")
 json.loads(serialized)  # fail fast on a broken file
 
 if not warehouse_id:

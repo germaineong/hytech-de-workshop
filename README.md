@@ -19,9 +19,9 @@ end (see *Verified* below).
  mt5-sg-01 · mt5-sg-02 · mt5-uk-01 · mt5-cy-01 (+ mt5-hk-01 onboarded live)      app events (JSON)
         │  DMS-style CDC Parquet  (LOAD00000001.parquet + yyyymmdd-hhmmssfff.parquet, Op = I/U/D)
         ▼
- /Volumes/hytech_de_workshop/raw/landing/mt5/<server>/<table>/            shared history, written by setup
+ /Volumes/hytech_ws_catalog/raw/landing/mt5/<server>/<table>/            shared history, written by setup
         ▼  lab 00 copies it per participant · 00b_Live_Data adds new DMS files on demand
- /Volumes/hytech_de_workshop/u_<name>/landing/mt5/<server>/<table>/
+ /Volumes/hytech_ws_catalog/u_<name>/landing/mt5/<server>/<table>/
         ▼  Spark Declarative Pipeline (per participant schema u_<name>)
  bronze_mt5_{users,deals,positions} · bronze_app_events
  silver_mt5_users (SCD2) · silver_mt5_positions (SCD1) · silver_mt5_deals (append + expectations)

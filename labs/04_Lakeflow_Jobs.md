@@ -24,7 +24,7 @@ write_audit_row   Run if: All done                (deps: alert_on_failure, notif
 
 | Key | Value |
 |---|---|
-| `catalog` | `hytech_de_workshop` |
+| `catalog` | `hytech_ws_catalog` |
 | `schema` | `u_<your_name>` |
 | `dq_max_drop_pct` | `1.0` |
 | `servers` | `["mt5-sg-01","mt5-sg-02","mt5-uk-01","mt5-cy-01"]` |
@@ -74,9 +74,9 @@ Compute: **Serverless** for every task.
 
 ## 4 · 触发器与通知 (Triggers and notifications)
 
-- **添加触发器 → 文件到达** 在你自己的落地区 `/Volumes/hytech_de_workshop/u_<your_name>/landing/mt5/`（触发器之间最少 60 秒）。用 `ticks` = 1 运行 `00b_Live_Data` → 新文件到达 → 你的作业自动启动（大约一分钟内）。演示后 **暂停** 触发器，以后运行 00b 时作业就不会再自动启动。几分钟后作业还没有启动？在作业的 **Schedules & Triggers** 中查看触发器的状态，或者直接 **Run now**，继续后面的步骤。
+- **添加触发器 → 文件到达** 在你自己的落地区 `/Volumes/hytech_ws_catalog/u_<your_name>/landing/mt5/`（触发器之间最少 60 秒）。用 `ticks` = 1 运行 `00b_Live_Data` → 新文件到达 → 你的作业自动启动（大约一分钟内）。演示后 **暂停** 触发器，以后运行 00b 时作业就不会再自动启动。几分钟后作业还没有启动？在作业的 **Schedules & Triggers** 中查看触发器的状态，或者直接 **Run now**，继续后面的步骤。
 
-  **Add trigger → File arrival** on your own landing zone `/Volumes/hytech_de_workshop/u_<your_name>/landing/mt5/` (minimum 60 s between triggers). Run `00b_Live_Data` with `ticks` = 1 → new files arrive → your job starts by itself (within about a minute). **Pause** the trigger again after the demo, so your later 00b runs don't start the job. No run after a few minutes? Check the trigger's status under the job's **Schedules & Triggers**, or just click **Run now** and carry on.
+  **Add trigger → File arrival** on your own landing zone `/Volumes/hytech_ws_catalog/u_<your_name>/landing/mt5/` (minimum 60 s between triggers). Run `00b_Live_Data` with `ticks` = 1 → new files arrive → your job starts by itself (within about a minute). **Pause** the trigger again after the demo, so your later 00b runs don't start the job. No run after a few minutes? Check the trigger's status under the job's **Schedules & Triggers**, or just click **Run now** and carry on.
 
 - 其他选项：**定时** (e.g. 每小时)、**表更新** (当上游表更新时启动，用于团队间管道依赖)、**持续**。
 

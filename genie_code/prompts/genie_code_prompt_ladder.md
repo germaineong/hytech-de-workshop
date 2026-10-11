@@ -79,10 +79,10 @@ login: table bloat, misleading history, higher cost.
 
 ### L5 · 成本查询 (cost query) — *SQL editor*
 
-> 用 `hytech_de_workshop.ops.billing_usage` 和 `ops.list_prices` 计算我的管道过去 7 天每天的 DBU 和标价成本（美元），
+> 用 `hytech_ws_catalog.ops.billing_usage` 和 `ops.list_prices` 计算我的管道过去 7 天每天的 DBU 和标价成本（美元），
 > 管道名以 trade_lakehouse 开头、由我创建（`ops.pipelines`）。
 
-> Using `hytech_de_workshop.ops.billing_usage` and `ops.list_prices`, calculate daily DBU and list-price cost (USD) for my pipelines over the past 7 days,
+> Using `hytech_ws_catalog.ops.billing_usage` and `ops.list_prices`, calculate daily DBU and list-price cost (USD) for my pipelines over the past 7 days,
 > where pipeline name starts with trade_lakehouse and created by me (`ops.pipelines`).
 
 ✅ **预期成果：** 在 `sku_name` 上的连接，带有价格有效窗口、`usage_quantity × pricing.default`，

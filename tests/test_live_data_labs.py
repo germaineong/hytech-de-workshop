@@ -41,7 +41,7 @@ def test_lab_00_copies_the_history_into_the_participants_own_volumes():
     assert "`00b_Live_Data`" in text
 
 
-PERSONAL = "/Volumes/hytech_de_workshop/u_<your_name>/landing"
+PERSONAL = "/Volumes/hytech_ws_catalog/u_<your_name>/landing"
 
 
 def test_lab_02_reads_your_own_landing_and_points_at_00b():

@@ -18,7 +18,7 @@
 
 -- COMMAND ----------
 
-USE CATALOG hytech_de_workshop;
+USE CATALOG hytech_ws_catalog;
 USE SCHEMA solutions;
 
 -- COMMAND ----------
@@ -136,7 +136,7 @@ DECLARE OR REPLACE VARIABLE my_schema STRING DEFAULT
   'u_' || regexp_replace(lower(split_part(current_user(), '@', 1)), '[^a-z0-9]', '_');
 
 -- 创建富化反馈表 (Create enriched feedback table)
-CREATE OR REPLACE TABLE IDENTIFIER('hytech_de_workshop.' || my_schema || '.feedback_enriched')
+CREATE OR REPLACE TABLE IDENTIFIER('hytech_ws_catalog.' || my_schema || '.feedback_enriched')
 COMMENT 'App feedback with AI topic, sentiment and masked text (batch inference, lab 07)'
 AS SELECT feedback_text, rating,
           ai_classify(feedback_text, ARRAY('withdrawal_delay', 'spread_or_pricing', 'app_stability',
@@ -146,5 +146,5 @@ AS SELECT feedback_text, rating,
    FROM (SELECT DISTINCT feedback_text, rating FROM silver_app_events WHERE event = 'app_feedback' LIMIT 200);  -- 保持 lab 运行快速且便宜 (keep the lab fast/cheap)
 
 SELECT topic, sentiment, count(*) AS n
-FROM IDENTIFIER('hytech_de_workshop.' || my_schema || '.feedback_enriched')
+FROM IDENTIFIER('hytech_ws_catalog.' || my_schema || '.feedback_enriched')
 GROUP BY ALL ORDER BY n DESC;

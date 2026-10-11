@@ -16,7 +16,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("schema", "")
 dbutils.widgets.text("event_log_table", "pipeline_event_log")
 

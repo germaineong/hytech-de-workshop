@@ -19,14 +19,14 @@
 
 打开 `/Workspace/Shared/hytech-de-workshop/labs/00_Start_Here` → 右上角选择 **Serverless** → 逐个运行单元格。它会：
 
-- 创建你的 schema：`hytech_de_workshop.u_<你的名字>`
-- 把共享的历史数据复制到你自己的落地区 `/Volumes/hytech_de_workshop/u_<你的名字>/landing`（第 1b 步，通常 1–2 分钟）
+- 创建你的 schema：`hytech_ws_catalog.u_<你的名字>`
+- 把共享的历史数据复制到你自己的落地区 `/Volumes/hytech_ws_catalog/u_<你的名字>/landing`（第 1b 步，通常 1–2 分钟）
 - 把所有实验复制到 `/Users/<你>/hytech_de_lab/`。之后**只在你自己的副本里操作**。
 
 Open `/Workspace/Shared/hytech-de-workshop/labs/00_Start_Here` → select **Serverless** in the top right → run each cell. It will:
 
-- Create your schema: `hytech_de_workshop.u_<your_name>`
-- Copy the shared history into your own landing zone `/Volumes/hytech_de_workshop/u_<your_name>/landing` (step 1b, usually 1–2 minutes)
+- Create your schema: `hytech_ws_catalog.u_<your_name>`
+- Copy the shared history into your own landing zone `/Volumes/hytech_ws_catalog/u_<your_name>/landing` (step 1b, usually 1–2 minutes)
 - Copy all labs to `/Users/<you>/hytech_de_lab/`. After that, **work only in your own copy**.
 
 ## 实验地图 (Lab map)

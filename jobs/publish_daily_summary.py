@@ -10,7 +10,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("schema", "")
 dbutils.widgets.text("llm_endpoint", "databricks-claude-sonnet-4-5")
 dbutils.widgets.text("report_date", "", "报表日期，留空 = 最新一天 (report date; empty = the latest day)")

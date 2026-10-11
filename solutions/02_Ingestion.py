@@ -14,7 +14,7 @@
 
 from pyspark.sql import functions as F
 
-catalog = "hytech_de_workshop"
+catalog = "hytech_ws_catalog"
 me = spark.sql("SELECT current_user()").first()[0]
 my_schema = "u_" + "".join(ch if ch.isalnum() else "_" for ch in me.split("@")[0].lower()).strip("_")
 landing = f"/Volumes/{catalog}/{my_schema}/landing"   # 你自己的落地区（实验 00 第 1b 步）(your own landing zone, lab 00 step 1b)
@@ -32,7 +32,7 @@ print("schema:", f"{catalog}.{my_schema}", "| landing:", landing, "| checkpoints
 # MAGIC %sql
 # MAGIC CREATE OR REPLACE TABLE ref_fx_rates
 # MAGIC COMMENT 'Daily USD value of each currency (CTAS from CSV)'
-# MAGIC AS SELECT * FROM read_files('/Volumes/hytech_de_workshop/raw/ref/fx_rates/', format => 'csv', header => true);
+# MAGIC AS SELECT * FROM read_files('/Volumes/hytech_ws_catalog/raw/ref/fx_rates/', format => 'csv', header => true);
 # MAGIC
 # MAGIC SELECT ccy, count(*) AS days, min(rate_date) AS first_day, max(rate_date) AS last_day, round(avg(usd_per_ccy), 6) AS avg_usd
 # MAGIC FROM ref_fx_rates GROUP BY ccy ORDER BY ccy;
@@ -51,7 +51,7 @@ print("schema:", f"{catalog}.{my_schema}", "| landing:", landing, "| checkpoints
 # MAGIC CREATE TABLE IF NOT EXISTS ref_symbols_copy COMMENT 'Symbols loaded with COPY INTO';
 # MAGIC
 # MAGIC COPY INTO ref_symbols_copy
-# MAGIC FROM '/Volumes/hytech_de_workshop/raw/ref/symbols/'
+# MAGIC FROM '/Volumes/hytech_ws_catalog/raw/ref/symbols/'
 # MAGIC FILEFORMAT = CSV
 # MAGIC FORMAT_OPTIONS ('header' = 'true', 'inferSchema' = 'true')
 # MAGIC COPY_OPTIONS ('mergeSchema' = 'true');

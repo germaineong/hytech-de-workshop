@@ -33,7 +33,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.dropdown("auto", "false", ["false", "true"], "自动完成手动步骤 (auto: do the hand steps for me)")
 dbutils.widgets.dropdown("start_over", "false", ["false", "true"], "从头再来：清空预发布通道 (start over: empty the staging lane)")
 

@@ -8,7 +8,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("schema", "")
 dbutils.widgets.text("task_key", "")
 dbutils.widgets.text("run_if", "")

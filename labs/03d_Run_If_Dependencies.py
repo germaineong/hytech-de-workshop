@@ -20,7 +20,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.dropdown("auto", "false", ["false", "true"], "自动运行作业 (auto: run the job for me)")
 
 # COMMAND ----------

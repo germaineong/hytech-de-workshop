@@ -2,12 +2,12 @@
 -- MAGIC %md
 -- MAGIC # 06 · 系统表 (System tables) — 成本、运行情况、血缘 (cost, runs, lineage)
 -- MAGIC
--- MAGIC 通过 `hytech_de_workshop.ops` 下的**治理视图**访问系统表：只包含本工作区的数据，SQL 文本已移除，其他人的身份被掩码。
+-- MAGIC 通过 `hytech_ws_catalog.ops` 下的**治理视图**访问系统表：只包含本工作区的数据，SQL 文本已移除，其他人的身份被掩码。
 -- MAGIC 这本身就是一个治理实践：分析师不需要直接访问整个账户的系统表。
 -- MAGIC
 -- MAGIC ⚠️ 账单数据（billing）有数小时延迟：今天的运行可能明天早上才完整出现。
 -- MAGIC
--- MAGIC Access system tables through **governance views** under `hytech_de_workshop.ops`: only your workspace's data, SQL text removed, others' identities masked.
+-- MAGIC Access system tables through **governance views** under `hytech_ws_catalog.ops`: only your workspace's data, SQL text removed, others' identities masked.
 -- MAGIC This is a governance practice: analysts don't need direct access to the entire account's system tables.
 -- MAGIC
 -- MAGIC ⚠️ Billing data has a few hours lag: today's runs may not appear completely until tomorrow morning.
@@ -20,7 +20,7 @@ DECLARE OR REPLACE VARIABLE my_schema STRING DEFAULT
 DECLARE OR REPLACE VARIABLE my_pipeline_id STRING;
 DECLARE OR REPLACE VARIABLE my_job_id STRING;
 
-USE CATALOG hytech_de_workshop;
+USE CATALOG hytech_ws_catalog;
 USE SCHEMA ops;
 
 -- 查找你的管道（Lab 03）和作业（Lab 04），按所有者和名称查找 (Find your pipeline (lab 03) and job (lab 04) by owner + name)

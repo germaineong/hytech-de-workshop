@@ -18,7 +18,7 @@ sf = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(sf)
 
 USER = "zhang.wei@hytech.example"
-CATALOG = "hytech_de_workshop"
+CATALOG = "hytech_ws_catalog"
 CJK = re.compile(r"[一-鿿]")
 with open(os.path.join(ROOT, "labs", "03_pipeline", "staging", sf.STAGING_FILE), encoding="utf-8") as fh:
     STAGING_SQL = fh.read()

@@ -9,8 +9,8 @@
 ---
 
 **1 · 平台 (Platform)**
-路径 `/Volumes/hytech_de_workshop/raw/landing/` 中，`hytech_de_workshop`、`raw`、`landing` 分别是什么？
-*(In this path, what are `hytech_de_workshop`, `raw` and `landing`?)*
+路径 `/Volumes/hytech_ws_catalog/raw/landing/` 中，`hytech_ws_catalog`、`raw`、`landing` 分别是什么？
+*(In this path, what are `hytech_ws_catalog`, `raw` and `landing`?)*
 
 - A. 工作区 / 文件夹 / 文件 (workspace / folder / file)
 - B. metastore / catalog / schema
@@ -18,7 +18,7 @@
 - D. S3 存储桶 / 前缀 / 对象 (S3 bucket / prefix / object)
 
 **2 · 治理 (Governance)**
-要让组 `de_workshop_sz` 能查询 `hytech_de_workshop.solutions.gold_daily_symbol_volume`，最少需要授予哪些权限？
+要让组 `de_workshop_sz` 能查询 `hytech_ws_catalog.solutions.gold_daily_symbol_volume`，最少需要授予哪些权限？
 *(What is the minimum set of privileges the group needs to query this table?)*
 
 - A. 只需要表上的 `SELECT` (only `SELECT` on the table)

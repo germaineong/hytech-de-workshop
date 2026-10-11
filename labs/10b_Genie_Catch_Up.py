@@ -8,7 +8,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("source_schema", "", "留空 = 你自己的 schema；管道坏了可填 solutions (empty = your own schema; solutions if your pipeline is broken)")
 
 # COMMAND ----------

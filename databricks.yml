@@ -13,7 +13,7 @@ include:
 variables:
   catalog:
     description: 工作坊使用的 Unity Catalog catalog / Unity Catalog catalog for the workshop
-    default: hytech_de_workshop
+    default: hytech_ws_catalog
   participant_group:
     description: 包含所有学员的账户级组 / Account-level group containing all participants
     default: de_workshop_sz

@@ -23,7 +23,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("ticks", "1")
 dbutils.widgets.text("new_server", "")
 dbutils.widgets.text("bad_batch_pct", "0")

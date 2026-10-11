@@ -58,13 +58,13 @@ and people get view rights only. This is Hytech's "no direct prod access" priori
 3. **Unity Catalog 授权**（SQL 编辑器，以 catalog 所有者身份）：<br>**Unity Catalog grants** (SQL editor, as the catalog owner):
 
    ```sql
-   CREATE SCHEMA IF NOT EXISTS hytech_de_workshop.solutions_cicd
+   CREATE SCHEMA IF NOT EXISTS hytech_ws_catalog.solutions_cicd
      COMMENT 'CI/CD demo: owned and written by the service principal';
-   ALTER SCHEMA hytech_de_workshop.solutions_cicd OWNER TO `<application-id>`;
-   GRANT USE CATALOG ON CATALOG hytech_de_workshop TO `<application-id>`;
-   GRANT USE SCHEMA ON SCHEMA hytech_de_workshop.raw TO `<application-id>`;
-   GRANT READ VOLUME ON VOLUME hytech_de_workshop.raw.landing TO `<application-id>`;
-   GRANT READ VOLUME ON VOLUME hytech_de_workshop.raw.ref TO `<application-id>`;
+   ALTER SCHEMA hytech_ws_catalog.solutions_cicd OWNER TO `<application-id>`;
+   GRANT USE CATALOG ON CATALOG hytech_ws_catalog TO `<application-id>`;
+   GRANT USE SCHEMA ON SCHEMA hytech_ws_catalog.raw TO `<application-id>`;
+   GRANT READ VOLUME ON VOLUME hytech_ws_catalog.raw.landing TO `<application-id>`;
+   GRANT READ VOLUME ON VOLUME hytech_ws_catalog.raw.ref TO `<application-id>`;
    ```
 
    服务主体拥有其 schema，因为生产对象应由服务主体或组（而不是个人）拥有。它只需要对着陆区的读权限。

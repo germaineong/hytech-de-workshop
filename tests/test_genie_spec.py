@@ -10,7 +10,7 @@ _spec = importlib.util.spec_from_file_location("genie_spec", os.path.join(HERE, 
 gs = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(gs)
 
-S = gs.genie_space("hytech_de_workshop", "u_x")
+S = gs.genie_space("hytech_ws_catalog", "u_x")
 HEX32 = re.compile(r"^[0-9a-f]{32}$")
 
 
@@ -22,7 +22,7 @@ def test_tables_are_the_participants_gold_tables_sorted_with_sorted_column_confi
     tables = S["data_sources"]["tables"]
     names = [t["identifier"] for t in tables]
     assert names == sorted(names) and len(names) == len(gs.GENIE_TABLES) <= 30
-    assert all(n.startswith("hytech_de_workshop.u_x.") for n in names)
+    assert all(n.startswith("hytech_ws_catalog.u_x.") for n in names)
     for t in tables:
         cols = [c["column_name"] for c in t.get("column_configs", [])]
         assert cols == sorted(cols)
@@ -93,8 +93,8 @@ def test_the_instructions_ask_for_simplified_chinese_and_full_numbers():
 
 
 def test_ids_are_stable_for_the_same_schema_and_differ_between_schemas():
-    assert gs.genie_space("hytech_de_workshop", "u_x") == S
-    other = gs.genie_space("hytech_de_workshop", "u_y")
+    assert gs.genie_space("hytech_ws_catalog", "u_x") == S
+    other = gs.genie_space("hytech_ws_catalog", "u_y")
     assert ids(other["config"]["sample_questions"]) != ids(S["config"]["sample_questions"])
     json.dumps(S, ensure_ascii=False)
 

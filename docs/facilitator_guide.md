@@ -7,7 +7,7 @@ One instructor presents while the other floats; swap per module. With 20 newcome
 ## 开课前 (Before the day)
 
 - [ ] Triones 已完成 `docs/setup_guide_triones.md`，包括**在会场完成的连通性测试**
-- [ ] 参考答案作业已运行一次 → `hytech_de_workshop.solutions` 已有数据（实验 07 和追进度都依赖它）
+- [ ] 参考答案作业已运行一次 → `hytech_ws_catalog.solutions` 已有数据（实验 07 和追进度都依赖它）
 - [ ] `llm_endpoint` 已设为 Hytech 所在区域可用的模型（在 SQL 编辑器中测试 `ai_query`）
 - [ ] Genie Code 技能在 `/Workspace/.assistant/skills/hytech-de-conventions/` 可见
 - [ ] 成本仪表盘 *Hytech DE Workshop - Cost and Health* 已发布（setup 任务 `cost_dashboard`）
@@ -20,7 +20,7 @@ One instructor presents while the other floats; swap per module. With 20 newcome
 - [ ] 在代码更新前运行过实验 00 的账号：删除 `hytech_de_lab/jobs/`，然后在共享文件夹中打开 `/Workspace/Shared/hytech-de-workshop/labs/00_Start_Here`，重新运行复制单元格（在自己的副本中运行时不会复制任何文件；复制不会覆盖已有文件，旧的作业笔记本不认识 `report_date`）
 
 - [ ] Triones has completed `docs/setup_guide_triones.md`, including the **connectivity test from the venue**
-- [ ] Solution job ran once → `hytech_de_workshop.solutions` is populated (lab 07 and catch-up depend on it)
+- [ ] Solution job ran once → `hytech_ws_catalog.solutions` is populated (lab 07 and catch-up depend on it)
 - [ ] `llm_endpoint` set to a model served in Hytech's region (test `ai_query` in the SQL editor)
 - [ ] Genie Code skill visible at `/Workspace/.assistant/skills/hytech-de-conventions/`
 - [ ] Cost dashboard *Hytech DE Workshop - Cost and Health* published (setup task `cost_dashboard`)

@@ -59,7 +59,7 @@ MT5_TABLES: tuple[str, ...] = ("mt5_users", "mt5_deals", "mt5_positions")
 
 @dataclass(frozen=True)
 class WorkshopConfig:
-    catalog: str = "hytech_de_workshop"
+    catalog: str = "hytech_ws_catalog"
     raw_schema: str = "raw"
     solutions_schema: str = "solutions"
     ops_schema: str = "ops"

@@ -11,7 +11,7 @@
 # COMMAND ----------
 
 # 输入参数 (Input parameters)
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("pipeline_name", "", "Default: trade_lakehouse_<your_name>")
 dbutils.widgets.text("llm_endpoint", "databricks-claude-sonnet-4-5")
 

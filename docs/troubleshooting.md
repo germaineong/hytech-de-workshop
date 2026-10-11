@@ -50,7 +50,7 @@
 Delete their pipeline and job in the UI first (or the pipeline keeps the old checkpoints), and their `/Users/<participant>/hytech_de_lab/` folder (or lab 00 keeps the old lab copies).
 
 ```sql
-DROP SCHEMA hytech_de_workshop.u_<name> CASCADE;   -- 然后重新运行 labs/00_Start_Here (then re-run labs/00_Start_Here)
+DROP SCHEMA hytech_ws_catalog.u_<name> CASCADE;   -- 然后重新运行 labs/00_Start_Here (then re-run labs/00_Start_Here)
 ```
 
 ## 重新生成数据（仅讲师，工作坊前）(Regenerate the data — instructors only, before the workshop)

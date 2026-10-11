@@ -11,7 +11,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 dbutils.widgets.text("participants", "", "Emails (comma or newline separated)")
 
 catalog = dbutils.widgets.get("catalog")

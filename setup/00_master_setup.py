@@ -24,7 +24,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop", "Catalog")
+dbutils.widgets.text("catalog", "hytech_ws_catalog", "Catalog")
 dbutils.widgets.text("participant_group", "de_workshop_sz", "学员组 (Participant group)")
 dbutils.widgets.text("participants", "", "学员邮箱，逗号分隔 (Participant emails, comma-separated)")
 dbutils.widgets.text("instructors", "", "讲师邮箱，逗号分隔 (Instructor emails, comma-separated)")

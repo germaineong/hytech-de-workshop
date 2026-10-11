@@ -6,9 +6,9 @@
 -- MAGIC
 -- MAGIC Three-level namespace · ownership · grants · views · tags · column mask · row filter · lineage
 -- MAGIC
--- MAGIC `catalog.schema.table` — 例如 `hytech_de_workshop.u_zhang_san.users_snapshot`
+-- MAGIC `catalog.schema.table` — 例如 `hytech_ws_catalog.u_zhang_san.users_snapshot`
 -- MAGIC
--- MAGIC `catalog.schema.table` — e.g. `hytech_de_workshop.u_zhang_san.users_snapshot`
+-- MAGIC `catalog.schema.table` — e.g. `hytech_ws_catalog.u_zhang_san.users_snapshot`
 -- MAGIC
 -- MAGIC 本 notebook 的所有对象都建在**你自己的 schema** 里（你是 owner）。
 -- MAGIC
@@ -21,7 +21,7 @@
 DECLARE OR REPLACE VARIABLE my_schema STRING DEFAULT
   'u_' || regexp_replace(lower(split_part(current_user(), '@', 1)), '[^a-z0-9]', '_');
 
-USE CATALOG hytech_de_workshop;
+USE CATALOG hytech_ws_catalog;
 USE SCHEMA IDENTIFIER(my_schema);
 SELECT current_catalog() AS catalog, current_schema() AS schema, current_user() AS me;
 
@@ -31,15 +31,15 @@ SELECT current_catalog() AS catalog, current_schema() AS schema, current_user() 
 
 -- COMMAND ----------
 
-SHOW SCHEMAS IN hytech_de_workshop;
+SHOW SCHEMAS IN hytech_ws_catalog;
 
 -- COMMAND ----------
 
-SHOW VOLUMES IN hytech_de_workshop.raw;
+SHOW VOLUMES IN hytech_ws_catalog.raw;
 
 -- COMMAND ----------
 
-LIST '/Volumes/hytech_de_workshop/raw/landing/mt5/mt5-sg-01/';
+LIST '/Volumes/hytech_ws_catalog/raw/landing/mt5/mt5-sg-01/';
 
 -- COMMAND ----------
 
@@ -64,7 +64,7 @@ AS SELECT
   Phone                                                   AS phone,
   Status                                                  AS status,
   Leverage                                                AS leverage
-FROM read_files('/Volumes/hytech_de_workshop/raw/landing/mt5/*/mt5_users/LOAD00000001.parquet', format => 'parquet');
+FROM read_files('/Volumes/hytech_ws_catalog/raw/landing/mt5/*/mt5_users/LOAD00000001.parquet', format => 'parquet');
 
 SELECT * FROM users_snapshot LIMIT 10;
 

@@ -1,8 +1,8 @@
 ---
 name: hytech-de-conventions
 description: >-
-  为 Hytech MT5 交易数据湖（catalog hytech_de_workshop 或 Hytech 的生产 catalog）编写、审查或调试数据工程代码时使用：Lakeflow Spark 声明式管道（bronze/silver/gold 流式表和物化视图）、AUTO CDC、期望、Auto Loader、Lakeflow 作业、Unity Catalog 授权/标签/掩码和系统表成本查询。编码 Hytech 命名、MT5 数据语义（成交、持仓、用户、DMS CDC）、成本感知模式和治理规则。
-  Use when writing, reviewing or debugging data-engineering code for the Hytech MT5 trade lakehouse (catalog hytech_de_workshop or Hytech's production catalogs): Lakeflow Spark Declarative Pipelines (bronze/silver/gold streaming tables and materialized views), AUTO CDC, expectations, Auto Loader, Lakeflow Jobs, Unity Catalog grants/tags/masks, and system-table cost queries. Encodes Hytech naming, MT5 data semantics (deals, positions, users, DMS CDC), cost-aware patterns and governance rules.
+  为 Hytech MT5 交易数据湖（catalog hytech_ws_catalog 或 Hytech 的生产 catalog）编写、审查或调试数据工程代码时使用：Lakeflow Spark 声明式管道（bronze/silver/gold 流式表和物化视图）、AUTO CDC、期望、Auto Loader、Lakeflow 作业、Unity Catalog 授权/标签/掩码和系统表成本查询。编码 Hytech 命名、MT5 数据语义（成交、持仓、用户、DMS CDC）、成本感知模式和治理规则。
+  Use when writing, reviewing or debugging data-engineering code for the Hytech MT5 trade lakehouse (catalog hytech_ws_catalog or Hytech's production catalogs): Lakeflow Spark Declarative Pipelines (bronze/silver/gold streaming tables and materialized views), AUTO CDC, expectations, Auto Loader, Lakeflow Jobs, Unity Catalog grants/tags/masks, and system-table cost queries. Encodes Hytech naming, MT5 data semantics (deals, positions, users, DMS CDC), cost-aware patterns and governance rules.
   Triggers: pipeline, streaming table, materialized view, AUTO CDC, expectation, Auto Loader, job, MT5, deals, positions, users, DMS, CDC, 管道, 流表, 物化视图, 数据质量, 作业.
 ---
 
@@ -14,8 +14,8 @@ Follow these rules whenever you generate or change code for the Hytech trade lak
 
 ## 1. 事物的位置 (Where things live)
 
-- 着陆区（只读）: `/Volumes/hytech_de_workshop/raw/landing/`；每位学员自己的副本（学员管道的 `landing_root`，`00b_Live_Data` 向其中写入新文件）: `/Volumes/hytech_de_workshop/u_<name>/landing/`<br>
-Landing zone (read-only): `/Volumes/hytech_de_workshop/raw/landing/`; each participant's own copy (their pipeline's `landing_root`, where `00b_Live_Data` writes new files): `/Volumes/hytech_de_workshop/u_<name>/landing/`
+- 着陆区（只读）: `/Volumes/hytech_ws_catalog/raw/landing/`；每位学员自己的副本（学员管道的 `landing_root`，`00b_Live_Data` 向其中写入新文件）: `/Volumes/hytech_ws_catalog/u_<name>/landing/`<br>
+Landing zone (read-only): `/Volumes/hytech_ws_catalog/raw/landing/`; each participant's own copy (their pipeline's `landing_root`, where `00b_Live_Data` writes new files): `/Volumes/hytech_ws_catalog/u_<name>/landing/`
   - `mt5/<server_id>/<table>/` — AWS DMS Parquet: `LOAD0000000N.parquet`（全量）和
     `yyyymmdd-hhmmssfff.parquet`（CDC）。每行都有 `Op`（`I`/`U`/`D`）和 `cdc_ts`（提交时间）。
     表：`mt5_users`, `mt5_deals`, `mt5_positions`。服务器：`mt5-sg-01`, `mt5-sg-02`, `mt5-uk-01`,
@@ -26,8 +26,8 @@ Landing zone (read-only): `/Volumes/hytech_de_workshop/raw/landing/`; each parti
     `mt5-cy-01` (+ new ones over time — never hard-code the list in ingestion).
   - `app_events/<yyyy-mm-dd>/events-*.json` — 传感器风格的 JSON 行（嵌套 `properties`）。<br>
     `app_events/<yyyy-mm-dd>/events-*.json` — Sensors-style JSON lines (nested `properties`).
-- 参考 CSV：`/Volumes/hytech_de_workshop/raw/ref/{symbols,ib_hierarchy,servers,fx_rates}/`。<br>
-Reference CSVs: `/Volumes/hytech_de_workshop/raw/ref/{symbols,ib_hierarchy,servers,fx_rates}/`.
+- 参考 CSV：`/Volumes/hytech_ws_catalog/raw/ref/{symbols,ib_hierarchy,servers,fx_rates}/`。<br>
+Reference CSVs: `/Volumes/hytech_ws_catalog/raw/ref/{symbols,ib_hierarchy,servers,fx_rates}/`.
 - 每个工程师在他们**自己的 schema** `u_<name>` 中进行构建。永不写入 `raw`、`solutions` 或 `ops`。<br>
 Each engineer builds in their **own schema** `u_<name>`. Never write to `raw`, `solutions` or `ops`.
 - 管道配置键：`landing_root`、`ref_root` — 使用 `${landing_root}`（SQL）或

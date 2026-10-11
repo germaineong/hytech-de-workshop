@@ -68,10 +68,10 @@
  mt5-sg-01 · mt5-sg-02 · mt5-uk-01 · mt5-cy-01
         │ DMS-style CDC Parquet: LOAD00000001.parquet + yyyymmdd-hhmmssfff.parquet (Op = I/U/D, cdc_ts)
         ▼
- /Volumes/hytech_de_workshop/raw/landing/mt5/<server>/<table>/      /landing/app_events/<date>/   (shared history)
+ /Volumes/hytech_ws_catalog/raw/landing/mt5/<server>/<table>/      /landing/app_events/<date>/   (shared history)
         │  lab 00 copies it per participant · 00b_Live_Data adds new DMS files on demand
         ▼
- /Volumes/hytech_de_workshop/u_<name>/landing/mt5/<server>/<table>/   /landing/app_events/<date>/
+ /Volumes/hytech_ws_catalog/u_<name>/landing/mt5/<server>/<table>/   /landing/app_events/<date>/
         │
         │  Lakeflow Spark Declarative Pipeline (serverless, per participant schema u_<name>)
         ▼
@@ -93,7 +93,7 @@
 |---|---|
 | 构建/测试工作区 (Build/test workspace) | `fe-vm-zh-serverless-ws`（AWS us-west-2，无服务器）<br>`fe-vm-zh-serverless-ws` (AWS us-west-2, serverless) |
 | Hytech 工作区 (Hytech workspace) | 与 Triones 待定 (TBC with Triones) (AWS us-east-1 or ap-southeast-1) |
-| 目录 (Catalog) | `hytech_de_workshop` |
+| 目录 (Catalog) | `hytech_ws_catalog` |
 | Schema | `raw` (volumes `landing`, `ref`, `producer`) · `solutions`（讲师解决方案 / instructor solution） · `ops`（系统表的受治理视图 / governed views over system tables） · `u_<name>`（每个学员一个，由他们所有 / one per participant, owned by them） |
 | 计算 (Compute) | 无服务器笔记本、作业和管道；一个无服务器 SQL 仓库（小型，扩展到 3 个集群）<br>Serverless notebooks, jobs and pipelines; one serverless SQL warehouse (Small, scaling to 3 clusters) |
 | 大语言模型端点 (LLM endpoint) | `databricks-claude-sonnet-4-5`（可配置）用于 `ai_query`<br>`databricks-claude-sonnet-4-5` (configurable) for `ai_query` |

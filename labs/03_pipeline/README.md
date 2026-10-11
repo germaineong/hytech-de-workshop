@@ -20,24 +20,24 @@ Build bronze → silver → gold for the MT5 data in **your own schema** `u_<nam
    | 管道名称 (Pipeline name) | `trade_lakehouse_<your_name>` |
    | 根文件夹 (Root folder) | `/Users/<you>/hytech_de_lab/03_pipeline` |
    | 源代码 (Source code) | `/Users/<you>/hytech_de_lab/03_pipeline/transformations` |
-   | 默认 catalog / schema (Default catalog / schema) | `hytech_de_workshop` / `u_<your_name>` |
+   | 默认 catalog / schema (Default catalog / schema) | `hytech_ws_catalog` / `u_<your_name>` |
 
 3. **Settings → Configuration** — 添加两个键值对：
 
    **Settings → Configuration** — add two key/value pairs:
    | 键 (Key) | 值 (Value) |
    |---|---|
-   | `landing_root` | `/Volumes/hytech_de_workshop/u_<your_name>/landing`（你自己的落地区，实验 00 第 1b 步打印了这个值）<br>(your own landing zone; step 1b of lab 00 printed this value) |
-   | `ref_root` | `/Volumes/hytech_de_workshop/raw/ref` |
+   | `landing_root` | `/Volumes/hytech_ws_catalog/u_<your_name>/landing`（你自己的落地区，实验 00 第 1b 步打印了这个值）<br>(your own landing zone; step 1b of lab 00 printed this value) |
+   | `ref_root` | `/Volumes/hytech_ws_catalog/raw/ref` |
 
-   > 你在这次更新之前已经用共享落地区 `/Volumes/hytech_de_workshop/raw/landing` 建好了管道？把 `landing_root` 改成你自己的落地区之后，运行一次 **Full refresh all**（完全刷新）；否则 bronze 会从新路径把全部历史再读一遍，silver 里会出现重复。
+   > 你在这次更新之前已经用共享落地区 `/Volumes/hytech_ws_catalog/raw/landing` 建好了管道？把 `landing_root` 改成你自己的落地区之后，运行一次 **Full refresh all**（完全刷新）；否则 bronze 会从新路径把全部历史再读一遍，silver 里会出现重复。
    >
-   > Built the pipeline on the shared landing zone `/Volumes/hytech_de_workshop/raw/landing` before this update? After you switch `landing_root` to your own landing zone, run **Full refresh all** once; otherwise bronze reads the whole history again from the new path and silver gets duplicates.
+   > Built the pipeline on the shared landing zone `/Volumes/hytech_ws_catalog/raw/landing` before this update? After you switch `landing_root` to your own landing zone, run **Full refresh all** once; otherwise bronze reads the whole history again from the new path and silver gets duplicates.
 
-4. **Settings → Advanced → Publish event log to metastore**：打开，表名 `pipeline_event_log`（catalog `hytech_de_workshop`，schema `u_<your_name>`）。Lab 04 中的作业会读取它。
+4. **Settings → Advanced → Publish event log to metastore**：打开，表名 `pipeline_event_log`（catalog `hytech_ws_catalog`，schema `u_<your_name>`）。Lab 04 中的作业会读取它。
 
    **Settings → Advanced → Publish event log to metastore**: on, table name `pipeline_event_log`
-   (catalog `hytech_de_workshop`, schema `u_<your_name>`). The job in lab 04 reads it.
+   (catalog `hytech_ws_catalog`, schema `u_<your_name>`). The job in lab 04 reads it.
 
 5. 计算资源（Compute）：**Serverless**。管道模式（Pipeline mode）：**Triggered**。
 

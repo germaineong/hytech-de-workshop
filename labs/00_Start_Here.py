@@ -23,7 +23,7 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "hytech_de_workshop")
+dbutils.widgets.text("catalog", "hytech_ws_catalog")
 catalog = dbutils.widgets.get("catalog")
 
 me = spark.sql("SELECT current_user()").first()[0]
