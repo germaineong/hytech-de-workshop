@@ -153,3 +153,12 @@ def test_the_setup_guide_starts_with_trioness_steps_in_order():
     get_code = text[text.index("## 1 ·"):text.index("## 2 ·")]
     assert "https://github.com/zhihantan/hytech-de-workshop" in get_code and "PR #1" in get_code
     assert "向 Zhi Han 请求访问权限" not in text and "ask Zhi Han for" not in text
+
+
+def test_no_doc_or_lab_quotes_the_pocs_cost_figures():
+    paths = ["README.md"] + [f"docs/{n}" for n in os.listdir(os.path.join(ROOT, "docs")) if n.endswith(".md")]
+    paths += [f"labs/{n}" for n in os.listdir(os.path.join(ROOT, "labs")) if n.endswith((".py", ".sql", ".md"))]
+    for path in paths:
+        text = read(path)
+        for figure in ("$480", "$40/", "480 美元", "40 美元"):
+            assert figure not in text, (path, figure)
