@@ -1,4 +1,4 @@
-# Hytech · Data Engineering with Databricks — MT5 Trade Lakehouse Workshop (Hytech · Databricks 数据工程 — MT5 交易湖仓工作坊)
+# Hytech · Data Engineering workshop with Databricks 数据工程培训
 
 一份完整的、实践性强的 **2 × 半天工作坊（普通话授课）**，面向 Hytech 深圳数据工程团队。学员将按照 Hytech 生产系统的架构模式，搭建一个**交易湖仓**。
 
