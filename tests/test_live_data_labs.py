@@ -103,3 +103,15 @@ def test_03b_and_the_lab_map_point_to_the_lab_03_readme():
     assert intro.count("`03_pipeline/README.md`") == 2 and "trade_lakehouse_<你的名字>" in intro and "trade_lakehouse_<your_name>" in intro
     row = next(line for line in read("labs/00_Start_Here.py").splitlines() if "`03b_Explore_Pipeline`" in line)
     assert "README.md" in row
+
+
+def test_every_03b_query_has_a_note_on_what_it_teaches_and_no_poc_cost_figures():
+    cells = [c.strip() for c in read("labs/03b_Explore_Pipeline.sql").split("-- COMMAND ----------")]
+    for i, cell in enumerate(cells):
+        if not cell.startswith("-- MAGIC") and not cell.startswith("-- Databricks"):
+            note = cells[i - 1]
+            assert note.startswith("-- MAGIC %md"), cell[:60]
+            for marker in ("**这一步看什么", "**What this shows", "**为什么重要", "**Why it matters"):
+                assert marker in note, (marker, cell[:60])
+    text = read("labs/03b_Explore_Pipeline.sql")
+    assert "480" not in text and "$40" not in text and "40 美元" not in text
