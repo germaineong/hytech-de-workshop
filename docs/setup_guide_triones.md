@@ -2,9 +2,9 @@
 
 *Hytech "Data Engineering with Databricks" workshop · Shenzhen · 13–14 Oct 2026*
 
-**请在 10 月 12 日（周一）晚上的预演之前完成**。预计需要约 30 分钟，大部分是等待时间；下面的第 1–3 步要提前几天安排。
+预计需要约 30 分钟，大部分是等待时间；下面的第 1–3 步要提前几天安排。
 
-**Please finish before the dry run on Monday evening, 12 Oct.** Expect about 30 minutes, most of it waiting; steps 1–3 below need a few days' lead time.
+Expect about 30 minutes, most of it waiting; steps 1–3 below need a few days' lead time.
 
 ## 按顺序完成 (In order) — 先看这里 (start here)
 

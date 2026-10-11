@@ -162,3 +162,9 @@ def test_no_doc_or_lab_quotes_the_pocs_cost_figures():
         text = read(path)
         for figure in ("$480", "$40/", "480 美元", "40 美元"):
             assert figure not in text, (path, figure)
+
+
+def test_the_setup_guide_leaves_the_dry_run_to_the_instructors():
+    text = read("docs/setup_guide_triones.md")
+    assert "预演" not in text and "dry run" not in text.lower()
+    assert "第 1–3 步要提前几天安排" in text and "steps 1–3 below need a few days' lead time" in text
